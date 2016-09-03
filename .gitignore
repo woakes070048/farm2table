@@ -90,3 +90,8 @@ ENV/
 
 # PyCharm stuff
 .idea/
+
+# Virtualenv stuff
+pip-selfcheck.json
+bin/
+include/
