@@ -44,8 +44,8 @@ INSTALLED_APPS = [
 ]
 
 # Debug only apps:
-if DJANGO_MODE == 'local':
-    INSTALLED_APPS.append()
+# if DJANGO_MODE == 'local':
+#     INSTALLED_APPS.append()
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
