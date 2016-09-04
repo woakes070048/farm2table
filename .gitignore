@@ -95,3 +95,6 @@ ENV/
 pip-selfcheck.json
 bin/
 include/
+
+# Databases
+*.sqlite3
