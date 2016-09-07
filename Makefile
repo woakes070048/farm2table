@@ -2,7 +2,7 @@ UNAME := $(shell uname)
 
 .PHONY: test
 test:
-	py.test -s
+	python3 manage.py test
 
 .PHONY: run
 run:
