@@ -5,7 +5,6 @@ from django.db import models
 
 class Product(models.Model):
     """The model for various products that farmers/producers sell"""
-    # TODO
     name = models.CharField(max_length=150)
     type = models.CharField(max_length=70)
     image = models.ImageField(blank=True, null=True)
