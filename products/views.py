@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+
+def list_products(request):
+    return HttpResponse("Welcome to the products page {}!".format(request.user.username))

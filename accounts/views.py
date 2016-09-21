@@ -8,4 +8,8 @@ class UserRegistrationView(CreateView):
     template_name = 'user_registration.html'
 
     def get_success_url(self):
-        return reverse('home')
+        return reverse('profile')
+
+class UserProfileView(CreateView):
+    form_class = UserCreationForm
+    template_name = 'profile.html'
