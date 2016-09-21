@@ -1,36 +1,35 @@
 {% load static %}
+
 <!doctype html>
 <html>
-	<head>
-		<title>ReadIt!</title>
-		<meta charset="utf-8">
-		<meta name="description"content="My great book review site">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-	</head>
-	<body>
-		<div class="container">
-			<header>
-				<div class="welcome">
-					{% if request.user.is_authenticated %}
-						<p>Hello {{ request.user.username|title }}, you last logged in at {{ request.user.last_login|date:"D d M Y" }}</p>
-					{% else %}
-						<p>Welcome guest!</p>
-					{% endif %}
-				</div>
-			</header>
+<head>
+    <title>farm2table</title>
+    <meta charset="utf-8">
+    <meta name="description" content="farm2table">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="welcome">
+            {% if request.user.is_authenticated %}
+                <p>Hello {{ request.user.username|title }}, you last logged in
+                    at {{ request.user.last_login|date:"D d M Y" }}</p>
+            {% else %}
+                <p>Welcome guest!</p>
+            {% endif %}
+        </div>
+    </header>
 
-			<nav>
-				nav
-			</nav>
+    {% block navigation %}{% endblock %}
 
-			<main>
-				{% block content %}{% endblock %}
-			</main>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 
-			<footer>
-				<p>My awesome book review website!</p>
-			</footer>
-		</div>
-	</body>
+    <footer>
+    </footer>
+</div>
+</body>
 </html>
