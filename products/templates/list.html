@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>
+<body>
+{% if request.user.is_authenticated %}
+    Hello {{ request.user.username }}, you last logged in {{ request.user.last_login|date:"D d M y" }}!
+{% else %}
+    Products page
+{% endif %}
+<main>
+    <h1>{{ products.count }} product{{ products.count|pluralize }}</h1>
+
+    {% for product in products %}
+        <h2>{{ product.quantity }} {{ product.name }}{{ product.quantity|pluralize }}</h2>
+        <span>Listed on {{ product.created }}</span>
+        {% if product.description %}
+            <p>{{ product.description }}</p>
+        {% else %}
+            <p><i>No description</i></p>
+        {% endif %}
+    {% endfor %}
+</main>
+</body>
+</html>

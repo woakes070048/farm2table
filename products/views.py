@@ -1,6 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Product
 
 
 def list_products(request):
-    return HttpResponse("Welcome to the products page {}!".format(request.user.username))
+    """
+    List products
+    """
+    products = Product.objects.all()
+
+    context = {
+        'products': products,
+    }
+    return render(request, "list.html", context)
