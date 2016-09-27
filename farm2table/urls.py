@@ -16,14 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from accounts.views import UserRegistrationView, UserProfileView
+from accounts.views import user_registration, UserProfileView
 from products.views import list_products
 
 urlpatterns = [
     url(r'^logout/', auth_views.logout, name="logout"),
     url(r'^login/', auth_views.login, {'template_name': 'login.html'}, name="login"),
     url(r'^admin/', admin.site.urls),
-    url(r'^new-user/$', UserRegistrationView.as_view(), name='user_registration'),
+    url(r'^new-user/$', user_registration, name='user_registration'),
     url(r'^profile/$', UserProfileView.as_view(), name="profile"),
     url(r'^$', list_products, name="products"),
 ]

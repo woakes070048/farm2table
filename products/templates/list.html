@@ -5,6 +5,7 @@
 
     {% for product in products %}
         <h2>{{ product.quantity }} {{ product.name }}{{ product.quantity|pluralize }}</h2>
+        <img src="{{ MEDIA_URL }}{{ product.image }}"/>
         <span>Listed on {{ product.created }}</span>
         {% if product.description %}
             <p>{{ product.description }}</p>

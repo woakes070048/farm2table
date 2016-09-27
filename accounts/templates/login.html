@@ -1,18 +1,25 @@
+{% extends "base.html" %}
+
 {% block content %}
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
+    {% if not request.user.is_authenticated %}
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
 
-        <label>{{ form.username.label }}</label>
-        {{ form.username }}
+            <label>{{ form.username.label }}</label>
+            {{ form.username }}
 
-        <label>{{ form.password.label }}</label>
-        {{ form.password }}
+            <label>{{ form.password.label }}</label>
+            {{ form.password }}
 
-        {% if form.errors %}
-            <div class="form-error">
-                <span>Your username and password didn't match. Please try again.</span>
-            </div>
-        {% endif %}
-        <input type="submit" value="login"/>
-    </form>
+            {% if form.errors %}
+                <div class="form-error">
+                    <span>Your username and password didn't match. Please try again.</span>
+                </div>
+            {% endif %}
+            <input type="hidden" name="next" value="{% url 'products' %}"/>
+            <input type="submit" value="login"/>
+        </form>
+    {% else %}
+        You are already logged in, would you like to <a href="{% url 'logout' %}">logout</a>
+    {% endif %}
 {% endblock %}
