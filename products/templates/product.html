@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name|title }}{% endblock %}
+{% block content %}
+    <h3>{{ product.quantity }} {{ product.name }}{{ product.quantity|pluralize }}</h3>
+    <img src="{{ MEDIA_URL }}{{ product.image }}"/>
+    <span>Listed on {{ product.created }} by {{ product.owner.username|title }}</span>
+    {% if product.description %}
+        <p>{{ product.description }}</p>
+    {% else %}
+        <p><i>No description</i></p>
+    {% endif %}
+{% endblock %}

@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from products.views import list_products
+from products.views import list_products, ProductDetail
 
 urlpatterns = [
     url(r'^logout/', auth_views.logout, name="logout"),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^products/(?P<pk>[-\w]+)/$', ProductDetail.as_view(), name="product-detail"),
     url(r'^$', list_products, name="products"),
 ]
