@@ -2,7 +2,9 @@
 {% block title %}{{ product.name|title }}{% endblock %}
 {% block content %}
     <h3>{{ product.quantity }} {{ product.name }}{{ product.quantity|pluralize }}</h3>
-    <img src="{{ MEDIA_URL }}{{ product.image }}"/>
+    {% if product.image.path != None %}
+        <img src="{{ product.image.path }}"/>
+    {% endif %}
     <span>Listed on {{ product.created }} by {{ product.owner.username|title }}</span>
     {% if product.description %}
         <p>{{ product.description }}</p>
