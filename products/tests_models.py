@@ -1,10 +1,11 @@
 from django.test import TestCase
 from products.models import Product
+from .factories import UserFactory, ProductFactory
 
 
 class ProductTest(TestCase):
     def setUp(self):
-        self.product = Product(name="test banana", type="test fruit", quantity="1")
+        self.product = Product(name="test banana", type="test fruit", quantity="1", owner=UserFactory())
         self.product.save()
 
     def tearDown(self):
