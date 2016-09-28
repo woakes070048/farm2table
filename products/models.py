@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -5,8 +6,15 @@ from django.db import models
 
 class Product(models.Model):
     """The model for various products that farmers/producers sell"""
+    product_types = (
+        ("V", "Vegetable"),
+        ("F", "Fruit"),
+        ("A", "Animal Product"),
+        ("G", "Grain")
+    )
     name = models.CharField(max_length=150)
-    type = models.CharField(max_length=70)
+    type = models.CharField(max_length=2, choices=product_types, default="V")
+    owner = models.ForeignKey(User, related_name="products")
     image = models.ImageField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     quantity = models.IntegerField()
